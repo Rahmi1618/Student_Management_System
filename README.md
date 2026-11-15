@@ -27,3 +27,25 @@ Student_Management_System/
 │   └── app.js               # Frontend API integration & dynamic DOM rendering
 ├── students.db              # Local SQLite database instance
 └── README.md                # Project documentation
+⚙️ Getting Started & Local Installation
+1. Clone the Repository
+Bash
+git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+cd Student_Management_System
+2. Install Backend Dependencies
+Make sure you are in the root directory, then run:
+
+Bash
+pip install -r backend/requirements.txt
+3. Run the FastAPI Backend Server
+Start the Uvicorn server using Python module execution:
+
+Bash
+python -m uvicorn backend.main:app --reload
+The API server will run live at http://127.0.0.1:8000.
+
+4. Launch the Frontend
+Open frontend/index.html using VS Code Live Server or any static local server to interact with the UI.
+
+🛡️ License
+This project is open-source and developed for educational and administrative management purposes.
