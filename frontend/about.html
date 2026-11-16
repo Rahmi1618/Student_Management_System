@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & System Requirements - EduCore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <nav class="bg-blue-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="bg-white text-blue-600 p-2 rounded-lg shadow-sm group-hover:bg-blue-50 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14v7"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold tracking-wide">EduCore Portal</span>
+            </a>
+            <div class="space-x-4 flex items-center">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="underline font-semibold">About</a>
+                <a href="portal.html" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition">Login / Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12 flex-grow space-y-10">
+        <section>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">About EduCore Student Management System</h2>
+            <p class="text-gray-700 leading-relaxed">
+                EduCore is a full-stack web application designed to streamline academic onboarding, student record administration, profile photo management, password recovery, and automated credential delivery. Built with a modern responsive frontend and a high-performance FastAPI backend, the platform enforces strict data integrity and role-based security.
+            </p>
+        </section>
+
+        <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">1. Functional System Requirements</h3>
+            <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+                <div>
+                    <h4 class="font-semibold text-blue-600 mb-2">Authentication, RBAC & Password Recovery</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Separate login workflows and protected endpoints for <strong>Administrators</strong> and <strong>Students</strong>.</li>
+                        <li>Token-based session authentication and SHA-256 password hashing.</li>
+                        <li>Self-service <strong>Forgot Password</strong> reset flow emailing temporary credentials via Gmail SMTP.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-blue-600 mb-2">Student Onboarding & Profile Photos</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Public registration form capturing full name, email, department, GPA, and optional profile photo.</li>
+                        <li>Pending request queue allowing administrators to review, approve, or reject applicants.</li>
+                        <li>Students can view their profile badge/photo and update their profile picture or password anytime.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-blue-600 mb-2">Department Management & Roster Filtering</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Standardized academic department selection across registration and administration views.</li>
+                        <li>Real-time admin filtering by academic department and search by name, email, or Student ID.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-blue-600 mb-2">Automated Email & Strict Input Validation</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Integration with Gmail SMTP (TLS on port 587) using App Password authentication.</li>
+                        <li>Pydantic schema validation enforcing valid email formats, GPA bounds (0.0 – 4.0), and duplicate prevention.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">2. Technical & Environment Requirements</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm text-gray-700">
+                    <thead>
+                        <tr class="border-b bg-gray-100 text-gray-900">
+                            <th class="py-3 px-4 font-semibold">Component</th>
+                            <th class="py-3 px-4 font-semibold">Technology / Requirement</th>
+                            <th class="py-3 px-4 font-semibold">Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Backend Runtime</td>
+                            <td class="py-3 px-4">Python 3.10+ (Tested on Python 3.13)</td>
+                            <td class="py-3 px-4">Core server execution environment</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">API Framework</td>
+                            <td class="py-3 px-4">FastAPI, Uvicorn, Pydantic, email-validator</td>
+                            <td class="py-3 px-4">RESTful API routing, ASGI server, and strict data validation</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Database</td>
+                            <td class="py-3 px-4">SQLite 3 (<code>students.db</code>)</td>
+                            <td class="py-3 px-4">Relational storage for admins, students, photos, and registration requests</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Frontend Stack</td>
+                            <td class="py-3 px-4">HTML5, Tailwind CSS, Vanilla JavaScript (ES6+)</td>
+                            <td class="py-3 px-4">Responsive user interface, FileReader photo encoding, and Fetch API calls</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Mail Server</td>
+                            <td class="py-3 px-4">Google Account with 2-Step Verification & 16-char App Password</td>
+                            <td class="py-3 px-4">Outgoing SMTP credential & password reset delivery via <code>smtp.gmail.com:587</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">3. Non-Functional Requirements</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm">
+                <li><strong>Security:</strong> Plaintext passwords are never stored in the database; all admin routes verify authorization headers before executing database mutations.</li>
+                <li><strong>Fault Tolerance:</strong> Email dispatch is wrapped in exception handling so temporary network or SMTP interruptions do not crash the API.</li>
+                <li><strong>Usability & Responsiveness:</strong> Clean, accessible UI layout adaptable to desktop and mobile viewports with immediate feedback banners.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 text-center py-4 text-sm">
+        &copy; 2026 EduCore Student Management System. All rights reserved.
+    </footer>
+</body>
+</html>
